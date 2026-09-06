@@ -99,14 +99,7 @@
 	</dependencies>
 
 	<build>
-		<!-- SonarQube Scanner Plugin -->
 		<plugins>
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.11.0.3922</version>
-			</plugin>
-
 			<plugin>
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
