@@ -1,0 +1,22 @@
+# ==============================================================================
+# DEVELOPMENT PROFILE (DEV) - Local Testing & Debugging
+# ==============================================================================
+server:
+  port: 9090
+
+spring:
+  # Local MongoDB Database Configuration
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/hospital_db
+      auto-index-creation: false
+
+# Logging Configuration for Development (Console + File)
+logging:
+  level:
+    root: INFO
+    com.Hospital.Manegment.System2: DEBUG
+    org.springframework.data.mongodb.core.MongoTemplate: INFO
+    org.springframework.security: INFO
+  file:
+    name: logs/hospital.log

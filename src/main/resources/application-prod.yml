@@ -1,0 +1,19 @@
+# ==============================================================================
+# PRODUCTION PROFILE (PROD) - Live Server Deployment
+# ==============================================================================
+server:
+  port: ${PORT:8080} # Cloud environment me PORT env variable uthata hai
+
+spring:
+  data:
+    mongodb:
+      # Production me database URI environment variable se aayega
+      uri: ${MONGO_URI:mongodb://localhost:27017/hospital_prod_db}
+      auto-index-creation: false
+
+# Production Logging: Sirf Warnings aur Errors log honge taaki disk space bache aur performance high rahe
+logging:
+  level:
+    root: WARN
+    com.Hospital.Manegment.System2: INFO
+    org.springframework.data.mongodb.core.MongoTemplate: ERROR

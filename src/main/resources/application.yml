@@ -1,0 +1,28 @@
+# ==============================================================================
+# MAIN APPLICATION CONFIGURATION (COMMON CONFIGURATION)
+# ==============================================================================
+spring:
+  application:
+    name: HospitalManagementSystem
+
+  # Default Active Profile (Jab tak koi doosra profile na bataya jaye, 'dev' chalega)
+  profiles:
+    active: dev
+
+# ==============================================================================
+# SWAGGER & OPENAPI CONFIGURATION
+# ==============================================================================
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+
+# ==============================================================================
+# CUSTOM JWT CONFIGURATION (Environment variables ya defaults)
+# ==============================================================================
+jwt:
+  secret: ${JWT_SECRET:NDI0MzQ0NDU0NjQ3NDg0OTRhNGI0YzRkNGU0ZjUwNTE1MjUzNTQ1NTU2NTc1ODU5NWE1YjVjNWQ1ZTVmNjA2MTYy}
+  expiration: 86400000 # 24 Hours in milliseconds
