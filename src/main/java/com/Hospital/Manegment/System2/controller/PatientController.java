@@ -31,8 +31,6 @@ public class PatientController {
     }
 
     // 2. Get All Patients with Pagination & Sorting -> GET /api/patients
-    // this a pagination and sorting
-    // -------------------------------------------------------------------------------------------
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
     public ResponseEntity<PatientResponse> getAllPatients(

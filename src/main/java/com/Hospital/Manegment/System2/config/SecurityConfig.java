@@ -88,18 +88,29 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Public Endpoints (Bina token ke accessible)
                         .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/style.css",
+                                "/app.js",
+                                "/favicon.ico",
+                                "/static/**",
                                 "/api/auth/**",
+                                "/api/kafka/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**",
-                                "/v3/api-docs.yaml"
-                        ).permitAll()
+                                "/v3/api-docs.yaml",
+                                "/actuator/**")
+                        .permitAll()
+                        // Hospital departments and doctors are public info (browser/Postman test ke
+                        // liye easy)
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/departments/**",
+                                "/api/doctors/**")
+                        .permitAll()
                         // Baaki saari Hospital APIs authenticated honi chahiye
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 

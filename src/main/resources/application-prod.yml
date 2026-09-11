@@ -1,6 +1,6 @@
-# ==============================================================================
+
 # PRODUCTION PROFILE (PROD) - Live Server Deployment
-# ==============================================================================
+
 server:
   port: ${PORT:8080} # Cloud environment me PORT env variable uthata hai
 
@@ -8,8 +8,15 @@ spring:
   data:
     mongodb:
       # Production me database URI environment variable se aayega
-      uri: ${MONGO_URI:mongodb://localhost:27017/hospital_prod_db}
+      uri: ${MONGO_URI}
       auto-index-creation: false
+    # Redis Cloud Configuration for Production Caching
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      username: ${REDIS_USERNAME}
+      password: ${REDIS_PASSWORD}
+      timeout: 5000ms
 
 # Production Logging: Sirf Warnings aur Errors log honge taaki disk space bache aur performance high rahe
 logging:

@@ -12,4 +12,8 @@ public interface AppointmentRepository extends MongoRepository<AppointmentEntity
     List<AppointmentEntity> findByPatientId(String patientId);
 
     List<AppointmentEntity> findByDoctorId(String doctorId);
+
+    List<AppointmentEntity> findByDoctorIdAndAppointmentDate(String doctorId, java.time.LocalDateTime appointmentDate);
+
+    long countByStatus(String status);
 }

@@ -1,6 +1,5 @@
-# ==============================================================================
 # DEVELOPMENT PROFILE (DEV) - Local Testing & Debugging
-# ==============================================================================
+
 server:
   port: 9090
 
@@ -10,6 +9,31 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/hospital_db
       auto-index-creation: false
+    # Redis Cloud Configuration
+    redis:
+      host: ${REDIS_HOST:geese-lace-brass-20336.db.redis.io}
+      port: ${REDIS_PORT:18990}
+      username: ${REDIS_USERNAME:default}
+      password: ${REDIS_PASSWORD:jpaYbNMvxsTp04COb3pvafjpq14BKuy2}
+      timeout: 5000ms
+  # Apache Kafka Cloud Configuration (Temporarily disabled)
+  # kafka:
+  #   bootstrap-servers: kafka-3edee160-nigamkumar76685763-b0d3.f.aivencloud.com:27929
+  #   properties:
+  #     security.protocol: SASL_SSL
+  #     sasl.mechanism: PLAIN
+  #     sasl.jaas.config: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="avnadmin" password="${KAFKA_PASSWORD:password}";'
+  #     ssl.truststore.location: src/main/resources/client.truststore.jks
+  #     ssl.truststore.password: changeit
+  #     ssl.truststore.type: JKS
+  #   producer:
+  #     key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #     value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #   consumer:
+  #     group-id: hospital-group
+  #     auto-offset-reset: earliest
+  #     key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  #     value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 # Logging Configuration for Development (Console + File)
 logging:
@@ -18,5 +42,7 @@ logging:
     com.Hospital.Manegment.System2: DEBUG
     org.springframework.data.mongodb.core.MongoTemplate: INFO
     org.springframework.security: INFO
+    org.springframework.cache: TRACE
   file:
     name: logs/hospital.log
+

@@ -96,4 +96,33 @@ public class AuthServiceImpl implements AuthService {
                 .message("Login successful!")
                 .build();
     }
+
+    // 3. Google OAuth Login / Seamless Account Provisioning
+    @Override
+    public AuthResponse googleOAuthLogin(com.Hospital.Manegment.System2.dto.GoogleOAuthRequest request) {
+        UserEntity user = userRepository.findByEmail(request.getEmail())
+                .orElseGet(() -> {
+                    UserEntity newUser = UserEntity.builder()
+                            .name(request.getName())
+                            .email(request.getEmail())
+                            .password(passwordEncoder.encode(java.util.UUID.randomUUID().toString()))
+                            .role(Role.ROLE_PATIENT)
+                            .createdAt(LocalDateTime.now())
+                            .updatedAt(LocalDateTime.now())
+                            .build();
+                    return userRepository.save(newUser);
+                });
+
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("role", user.getRole().name());
+        extraClaims.put("provider", "GOOGLE");
+        String jwtToken = jwtService.generateToken(extraClaims, user);
+
+        return AuthResponse.builder()
+                .token(jwtToken)
+                .email(user.getEmail())
+                .role(user.getRole())
+                .message("Google authentication successful!")
+                .build();
+    }
 }

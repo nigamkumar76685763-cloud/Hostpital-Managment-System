@@ -28,12 +28,20 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    // 2. User Login -> POST /api/auth/login
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
         log.info("Authentication attempt for email: {}", request.getEmail());
         AuthResponse response = authService.login(request);
         log.info("User {} successfully logged in with role: {}", response.getEmail(), response.getRole());
+        return ResponseEntity.ok(response);
+    }
+
+    // 3. Google OAuth Login / Instant Token Generation -> POST /api/auth/google
+    @PostMapping("/google")
+    public ResponseEntity<AuthResponse> googleLogin(@Valid @RequestBody com.Hospital.Manegment.System2.dto.GoogleOAuthRequest request) {
+        log.info("Google OAuth login request for email: {}", request.getEmail());
+        AuthResponse response = authService.googleOAuthLogin(request);
+        log.info("User {} successfully authenticated via Google OAuth", response.getEmail());
         return ResponseEntity.ok(response);
     }
 }

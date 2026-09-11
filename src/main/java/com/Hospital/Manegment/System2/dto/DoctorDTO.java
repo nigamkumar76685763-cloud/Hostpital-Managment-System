@@ -23,4 +23,12 @@ public class DoctorDTO {
 
     @NotNull(message = "Email is required")
     private String email;
+
+    private boolean available = true;
+
+    private Double consultationFee = 500.0;
+
+    private Integer experienceYears = 5;
+
+    private Double rating = 4.8;
 }

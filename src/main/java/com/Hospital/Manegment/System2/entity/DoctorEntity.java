@@ -16,6 +16,7 @@ public class DoctorEntity {
 
     @Id
     private String id;
+    
     private String name;
 
     @Indexed
@@ -26,4 +27,12 @@ public class DoctorEntity {
 
     @Indexed(unique = true)
     private String email;
+
+    private boolean available = true;
+
+    private Double consultationFee = 500.0;
+
+    private Integer experienceYears = 5;
+
+    private Double rating = 4.8;
 }

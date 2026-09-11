@@ -17,8 +17,7 @@ public class AppointmentDTO {
     @NotNull(message = "appointmentDate cannot be empty")
     private LocalDateTime appointmentDate;
 
-    @NotNull(message = "status cannot be empty")
-    private String status;
+    private String status = "CONFIRMED";
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -28,4 +27,9 @@ public class AppointmentDTO {
 
     @NotNull(message = "doctorId cannot be empty")
     private String doctorId;
+
+    private String diagnosis;
+    private String prescription;
+    private String notes;
+    private String tokenNumber;
 }

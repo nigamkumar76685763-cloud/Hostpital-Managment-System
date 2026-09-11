@@ -30,4 +30,8 @@ public class AppointmentEntity {
     @Indexed
     private String doctorId;
 
+    private String diagnosis;
+    private String prescription;
+    private String notes;
+    private String tokenNumber;
 }

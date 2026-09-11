@@ -1,123 +1,48 @@
 package com.Hospital.Manegment.System2.dto;
 
+import org.springframework.data.annotation.Id;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PatientDTO {
 
+    @Id
     private String id;
+
+    @NotNull(message = "Name is required")
     private String name;
+
+    @NotNull(message = "Age is required")
     private int age;
+
+    @NotNull(message = "Gender is required")
     private String gender;
+
+    @NotNull(message = "Date of Birth is required")
     private LocalDate dateOfBirth;
+
+    @NotNull(message = "Phone Number is required")
     private String phoneNumber;
+
+    @NotNull(message = "Email is required")
     private String email;
+
+    @NotNull(message = "Blood Group is required")
     private String bloodGroup;
+
+    @NotNull(message = "Emergency Contact Name is required")
     private String emergencyContactName;
+
+    @NotNull(message = "Disease is required")
     private String disease;
+
+    @NotNull(message = "Insurance is required")
     private InsuranceDTO insurance;
 
-    public PatientDTO() {
-    }
-
-    public PatientDTO(String id, String name, int age, String gender, LocalDate dateOfBirth, String phoneNumber, String email, String bloodGroup, String emergencyContactName, String disease, InsuranceDTO insurance) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.bloodGroup = bloodGroup;
-        this.emergencyContactName = emergencyContactName;
-        this.disease = disease;
-        this.insurance = insurance;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
-
-    public String getEmergencyContactName() {
-        return emergencyContactName;
-    }
-
-    public void setEmergencyContactName(String emergencyContactName) {
-        this.emergencyContactName = emergencyContactName;
-    }
-
-    public String getDisease() {
-        return disease;
-    }
-
-    public void setDisease(String disease) {
-        this.disease = disease;
-    }
-
-    public InsuranceDTO getInsurance() {
-        return insurance;
-    }
-
-    public void setInsurance(InsuranceDTO insurance) {
-        this.insurance = insurance;
-    }
 }

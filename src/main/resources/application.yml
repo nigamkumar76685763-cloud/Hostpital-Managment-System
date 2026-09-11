@@ -1,6 +1,5 @@
-# ==============================================================================
+
 # MAIN APPLICATION CONFIGURATION (COMMON CONFIGURATION)
-# ==============================================================================
 spring:
   application:
     name: HospitalManagementSystem
@@ -9,9 +8,8 @@ spring:
   profiles:
     active: dev
 
-# ==============================================================================
+
 # SWAGGER & OPENAPI CONFIGURATION
-# ==============================================================================
 springdoc:
   api-docs:
     path: /v3/api-docs
@@ -20,9 +18,18 @@ springdoc:
     operationsSorter: method
     tagsSorter: alpha
 
-# ==============================================================================
 # CUSTOM JWT CONFIGURATION (Environment variables ya defaults)
-# ==============================================================================
 jwt:
   secret: ${JWT_SECRET:NDI0MzQ0NDU0NjQ3NDg0OTRhNGI0YzRkNGU0ZjUwNTE1MjUzNTQ1NTU2NTc1ODU5NWE1YjVjNWQ1ZTVmNjA2MTYy}
   expiration: 86400000 # 24 Hours in milliseconds
+
+# ACTUATOR & MONITORING CONFIGURATION
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraCare | Smart Hospital & Healthcare Ecosystem</title>
+    
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Canvas Confetti for Booking Celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- BACKGROUND GLOW EFFECTS -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- NAVIGATION BAR -->
+    <header class="navbar glass">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="activity"></i>
+                </div>
+                <span>Aura<span class="text-gradient">Care</span></span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#departments">Departments</a>
+                <a href="#doctors">Specialists</a>
+                <a href="#stats">Hospital Pulse</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div id="userProfileBadge" class="user-badge hidden">
+                    <span id="userNameDisplay">User</span>
+                    <button id="logoutBtn" class="btn-icon" title="Logout"><i data-lucide="log-out"></i></button>
+                </div>
+                <button id="authTriggerBtn" class="btn btn-primary glow-btn">
+                    <i data-lucide="shield"></i> Sign In / Portal
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="badge-pill pulse-badge">
+                <span class="pulse-dot"></span> Next-Gen AI Integrated Healthcare
+            </div>
+            <h1 class="hero-title">Precision Medicine <br><span class="text-gradient">Human Care.</span></h1>
+            <p class="hero-subtitle">Book instantaneous appointments with world-class specialists. Real-time slot reservation powered by zero-latency backend.</p>
+            
+            <div class="hero-cta-group">
+                <a href="#doctors" class="btn btn-primary btn-large glow-btn">
+                    <i data-lucide="calendar"></i> Book Appointment
+                </a>
+                <a href="#departments" class="btn btn-secondary btn-large">
+                    <i data-lucide="compass"></i> Explore Specialties
+                </a>
+            </div>
+
+            <div class="hero-live-tags">
+                <div class="live-tag"><i data-lucide="check-circle-2"></i> 24/7 Verified Doctors</div>
+                <div class="live-tag"><i data-lucide="zap"></i> Redis-Accelerated Search</div>
+                <div class="live-tag"><i data-lucide="lock"></i> End-to-End Encrypted</div>
+            </div>
+        </div>
+
+        <div class="hero-card-preview">
+            <div class="hero-glass-card glass float-card">
+                <div class="card-header">
+                    <div class="status-indicator online"></div>
+                    <div>
+                        <h4>Live Emergency Wing</h4>
+                        <p class="text-muted">General Ward & ICU</p>
+                    </div>
+                </div>
+                <div class="metrics-row">
+                    <div class="metric-box">
+                        <span class="metric-number">99.9%</span>
+                        <span class="metric-label">Recovery Rate</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-number">15 min</span>
+                        <span class="metric-label">Avg Wait Time</span>
+                    </div>
+                </div>
+                <div class="card-footer-alert">
+                    <i data-lucide="shield-alert"></i> 14 On-Duty Specialists Online
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS COUNTER BAR -->
+    <section id="stats" class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card glass">
+                <div class="stat-icon"><i data-lucide="users"></i></div>
+                <div class="stat-info">
+                    <h3 class="stat-value" data-target="15000">15,000+</h3>
+                    <p>Patients Treated</p>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon"><i data-lucide="award"></i></div>
+                <div class="stat-info">
+                    <h3 class="stat-value" data-target="85">85+</h3>
+                    <p>Specialist Doctors</p>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon"><i data-lucide="building-2"></i></div>
+                <div class="stat-info">
+                    <h3 class="stat-value" data-target="12">12+</h3>
+                    <p>Advanced Wings</p>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon"><i data-lucide="clock"></i></div>
+                <div class="stat-info">
+                    <h3 class="stat-value">24/7</h3>
+                    <p>Instant Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPARTMENTS SECTION -->
+    <section id="departments" class="section-container">
+        <div class="section-header">
+            <span class="section-tag">MEDICAL EXCELLENCE</span>
+            <h2>Dedicated Healthcare <span class="text-gradient">Departments</span></h2>
+            <p>World-class specialized infrastructure designed for patient-first care.</p>
+        </div>
+
+        <div id="departmentsGrid" class="departments-grid">
+            <!-- Dynamic departments injected here via JS -->
+            <div class="skeleton-card glass"></div>
+            <div class="skeleton-card glass"></div>
+            <div class="skeleton-card glass"></div>
+        </div>
+    </section>
+
+    <!-- DOCTORS SECTION -->
+    <section id="doctors" class="section-container">
+        <div class="section-header">
+            <span class="section-tag">OUR SPECIALISTS</span>
+            <h2>Consult With Leading <span class="text-gradient">Physicians</span></h2>
+            <p>Filter by specialty and reserve a confirmed slot instantly.</p>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="filter-toolbar glass">
+            <div class="search-input-box">
+                <i data-lucide="search"></i>
+                <input type="text" id="doctorSearchInput" placeholder="Search doctor by name or specialty...">
+            </div>
+            <div class="filter-chips" id="specialtyFilterChips">
+                <button class="chip active" data-filter="all">All Specialties</button>
+                <button class="chip" data-filter="Cardiology">Cardiology</button>
+                <button class="chip" data-filter="Neurology">Neurology</button>
+                <button class="chip" data-filter="Orthopedics">Orthopedics</button>
+            </div>
+        </div>
+
+        <div id="doctorsGrid" class="doctors-grid">
+            <!-- Dynamic doctor cards injected here via JS -->
+            <div class="skeleton-card glass"></div>
+            <div class="skeleton-card glass"></div>
+            <div class="skeleton-card glass"></div>
+        </div>
+    </section>
+
+    <!-- AUTHENTICATION MODAL (LOGIN / REGISTER) -->
+    <div id="authModal" class="modal-overlay hidden">
+        <div class="modal-card glass">
+            <button class="modal-close-btn" id="closeAuthModal"><i data-lucide="x"></i></button>
+            
+            <div class="auth-tabs">
+                <button id="loginTabBtn" class="tab-btn active">Sign In</button>
+                <button id="registerTabBtn" class="tab-btn">Create Account</button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="loginEmail" required placeholder="user@example.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="key"></i>
+                        <input type="password" id="loginPassword" required placeholder="••••••••">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full glow-btn">
+                    <i data-lucide="log-in"></i> Sign In to Portal
+                </button>
+            </form>
+
+            <!-- REGISTER FORM -->
+            <form id="registerForm" class="auth-form hidden">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="user"></i>
+                        <input type="text" id="regName" required placeholder="Dr. Rahul Verma / Patient Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="regEmail" required placeholder="name@domain.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Create Password</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="lock"></i>
+                        <input type="password" id="regPassword" required placeholder="Min 6 characters">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Account Role</label>
+                    <select id="regRole" class="styled-select">
+                        <option value="ROLE_PATIENT">Patient (Book Appointments)</option>
+                        <option value="ROLE_DOCTOR">Doctor (Manage Patients)</option>
+                        <option value="ROLE_ADMIN">Hospital Administrator</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full glow-btn">
+                    <i data-lucide="user-plus"></i> Create Account
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOOK APPOINTMENT MODAL -->
+    <div id="bookingModal" class="modal-overlay hidden">
+        <div class="modal-card glass booking-modal-card">
+            <button class="modal-close-btn" id="closeBookingModal"><i data-lucide="x"></i></button>
+            
+            <div class="modal-header">
+                <div class="badge-pill">CONFIRMED SLOT</div>
+                <h3 id="bookingDoctorName">Book Appointment</h3>
+                <p class="text-muted" id="bookingDoctorSpec">Specialization</p>
+            </div>
+
+            <form id="appointmentForm" class="booking-form">
+                <input type="hidden" id="selectedDoctorId">
+
+                <div class="form-group">
+                    <label>Select Appointment Date & Time</label>
+                    <div class="input-with-icon">
+                        <i data-lucide="calendar-clock"></i>
+                        <input type="datetime-local" id="appointmentDateTime" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Reason for Visit / Symptoms</label>
+                    <textarea id="appointmentReason" rows="3" required placeholder="e.g. Regular cardiac checkup, chest discomfort, or second opinion..."></textarea>
+                </div>
+
+                <div class="booking-summary-box glass">
+                    <div class="summary-row">
+                        <span>Consultation Mode</span>
+                        <span class="text-highlight">In-Hospital Priority</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Reservation Fee</span>
+                        <span class="text-highlight">₹0 (Included in Consultation)</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full glow-btn btn-large">
+                    <i data-lucide="check-circle"></i> Confirm Appointment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION POPUP -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer glass">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon"><i data-lucide="activity"></i></div>
+                    <span>Aura<span class="text-gradient">Care</span></span>
+                </div>
+                <p>Enterprise Grade Healthcare Management Suite. Powered by Spring Boot 3 & MongoDB.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AuraCare Systems. Engineered for High-Reliability Patient Care.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

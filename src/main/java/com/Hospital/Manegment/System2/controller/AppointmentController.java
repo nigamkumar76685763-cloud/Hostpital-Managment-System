@@ -76,4 +76,46 @@ public class AppointmentController {
         }
         return ResponseEntity.ok(message);
     }
+
+    // 6. Get Appointments by Patient ID -> GET /api/appointments/patient/{patientId}
+    @GetMapping("/patient/{patientId}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR', 'PATIENT')")
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByPatientId(@PathVariable String patientId) {
+        log.info("Fetching appointments for patient ID: {}", patientId);
+        List<AppointmentDTO> list = appointmentService.getAppointmentsByPatientId(patientId);
+        return ResponseEntity.ok(list);
+    }
+
+    // 7. Get Appointments by Doctor ID -> GET /api/appointments/doctor/{doctorId}
+    @GetMapping("/doctor/{doctorId}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByDoctorId(@PathVariable String doctorId) {
+        log.info("Fetching appointments for doctor ID: {}", doctorId);
+        List<AppointmentDTO> list = appointmentService.getAppointmentsByDoctorId(doctorId);
+        return ResponseEntity.ok(list);
+    }
+
+    // 8. Update Appointment Status -> PATCH /api/appointments/{id}/status?status=CANCELLED|COMPLETED
+    @PatchMapping("/{id}/status")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR', 'PATIENT')")
+    public ResponseEntity<AppointmentDTO> updateAppointmentStatus(
+            @PathVariable String id,
+            @RequestParam String status) {
+        log.info("Updating appointment {} status to: {}", id, status);
+        AppointmentDTO updated = appointmentService.updateAppointmentStatus(id, status);
+        return ResponseEntity.ok(updated);
+    }
+
+    // 9. Add Prescription / Medical Diagnosis -> POST /api/appointments/{id}/prescription
+    @PostMapping("/{id}/prescription")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
+    public ResponseEntity<AppointmentDTO> addPrescription(
+            @PathVariable String id,
+            @RequestParam String diagnosis,
+            @RequestParam String prescription,
+            @RequestParam(required = false) String notes) {
+        log.info("Adding medical prescription for appointment ID: {}", id);
+        AppointmentDTO updated = appointmentService.addPrescription(id, diagnosis, prescription, notes);
+        return ResponseEntity.ok(updated);
+    }
 }

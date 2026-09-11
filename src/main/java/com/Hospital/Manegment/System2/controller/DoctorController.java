@@ -34,9 +34,9 @@ public class DoctorController {
         return new ResponseEntity<>(createdDoctor, HttpStatus.CREATED);
     }
 
-    // 2. Get All Doctors -> GET /api/doctors (Public to all authenticated users)
+    // 2. Get All Doctors -> GET /api/doctors (Publicly viewable)
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR', 'PATIENT')")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<List<DoctorDTO>> getAllDoctors() {
         log.debug("Fetching all doctors from MongoDB database");
         List<DoctorDTO> doctors = doctorService.getAllDoctors();
@@ -44,13 +44,13 @@ public class DoctorController {
             log.warn("No doctors found in database");
             return new ResponseEntity<>(doctors, HttpStatus.NOT_FOUND);
         }
-        log.debug("Total doctors retrieved: {}", doctors.size());
+        log.info("Found {} doctors in system", doctors.size());
         return ResponseEntity.ok(doctors);
     }
 
     // 3. Get Doctor by ID -> GET /api/doctors/{id}
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR', 'PATIENT')")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<DoctorDTO> getDoctorById(@PathVariable String id) {
         log.debug("Fetching doctor details for ID: {}", id);
         DoctorDTO doctor = doctorService.getDoctorById(id);
@@ -102,5 +102,16 @@ public class DoctorController {
             return new ResponseEntity<>(doctors, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(doctors);
+    }
+
+    // 7. Toggle Doctor Availability -> PATCH /api/doctors/{id}/availability?available=true|false
+    @PatchMapping("/{id}/availability")
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
+    public ResponseEntity<DoctorDTO> toggleAvailability(
+            @PathVariable String id,
+            @RequestParam boolean available) {
+        log.info("Request to update availability for doctor ID {} to {}", id, available);
+        DoctorDTO updatedDoctor = doctorService.toggleAvailability(id, available);
+        return ResponseEntity.ok(updatedDoctor);
     }
 }

@@ -28,9 +28,9 @@ public class DepartmentController {
         return new ResponseEntity<>(createdDept, HttpStatus.CREATED);
     }
 
-    // 2. Get All Departments -> GET /api/departments
+    // 2. Get All Departments -> GET /api/departments (Publicly viewable)
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR', 'PATIENT')")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<List<DepartmentDTO>> getAllDepartments() {
         List<DepartmentDTO> departments = departmentService.getAllDepartments();
         if (departments == null) {
@@ -39,9 +39,9 @@ public class DepartmentController {
         return ResponseEntity.ok(departments);
     }
 
-    // 3. Get Department by ID -> GET /api/departments/{id}
+    // 3. Get Department by ID -> GET /api/departments/{id} (Publicly viewable)
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR', 'PATIENT')")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<DepartmentDTO> getDepartmentById(@PathVariable String id) {
         DepartmentDTO department = departmentService.getDepartmentById(id);
         if (department == null) {

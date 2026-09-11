@@ -14,4 +14,12 @@ public interface AppointmentService {
     AppointmentDTO updateAppointment(String id, AppointmentDTO appointmentDTO);
 
     String deleteAppointment(String id);
+
+    List<AppointmentDTO> getAppointmentsByPatientId(String patientId);
+
+    List<AppointmentDTO> getAppointmentsByDoctorId(String doctorId);
+
+    AppointmentDTO updateAppointmentStatus(String id, String status);
+
+    AppointmentDTO addPrescription(String id, String diagnosis, String prescription, String notes);
 }

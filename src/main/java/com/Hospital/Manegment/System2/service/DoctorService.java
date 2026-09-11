@@ -16,4 +16,6 @@ public interface DoctorService {
     String deleteDoctor(String id);
 
     List<DoctorDTO> getDoctorsBySpecialization(String specialization);
+
+    DoctorDTO toggleAvailability(String id, boolean available);
 }

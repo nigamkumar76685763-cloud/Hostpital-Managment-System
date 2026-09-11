@@ -1,5 +1,4 @@
 package com.Hospital.Manegment.System2.dto;
-
 import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotBlank;
@@ -22,7 +21,7 @@ public class DepartmentDTO {
 
     @NotBlank(message = "location cannot be empty")
     private String location;
-
+    
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
